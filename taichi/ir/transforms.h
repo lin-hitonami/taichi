@@ -177,6 +177,7 @@ void compile_inline_function(IRNode *ir,
                              const CompileConfig &config,
                              Function *func,
                              bool grad,
+                             bool ad_use_stack,
                              bool verbose,
                              bool start_from_ast);
 }  // namespace irpass

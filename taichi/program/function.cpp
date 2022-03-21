@@ -20,6 +20,7 @@ void Function::set_function_body(const std::function<void()> &func) {
   }
   irpass::compile_inline_function(ir.get(), program->config, this,
                                   /*grad=*/false,
+                                  /*ad_use_stack=*/false,
                                   /*verbose=*/program->config.print_ir,
                                   /*start_from_ast=*/true);
 }
@@ -28,6 +29,7 @@ void Function::set_function_body(std::unique_ptr<IRNode> func_body) {
   ir = std::move(func_body);
   irpass::compile_inline_function(ir.get(), program->config, this,
                                   /*grad=*/false,
+                                  /*ad_use_stack=*/false,
                                   /*verbose=*/program->config.print_ir,
                                   /*start_from_ast=*/false);
 }

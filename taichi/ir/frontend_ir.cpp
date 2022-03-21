@@ -515,6 +515,7 @@ void AtomicOpExpression::flatten(FlattenContext *ctx) {
     // emit local store stmt
     auto alloca = ctx->current_block->lookup_var(dest.cast<IdExpression>()->id);
     ctx->push_back<AtomicOpStmt>(op_type, alloca, expr->stmt);
+//    std::cout << "alloca type: " << alloca->ret_type->to_string() << std::endl;
   } else {
     TI_ASSERT(dest.is<GlobalPtrExpression>() ||
               dest.is<TensorElementExpression>());

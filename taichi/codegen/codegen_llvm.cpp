@@ -1224,6 +1224,7 @@ void CodeGenLLVM::visit(AtomicOpStmt *stmt) {
   for (int l = 0; l < stmt->width(); l++) {
     llvm::Value *old_value;
     if (stmt->op_type == AtomicOpType::add) {
+      std::cout << "codegen dest type " << stmt->dest->ret_type->to_string() << std::endl;
       auto dst_type =
           stmt->dest->ret_type->as<PointerType>()->get_pointee_type();
       if (dst_type->is<PrimitiveType>() && is_integral(stmt->val->ret_type)) {
